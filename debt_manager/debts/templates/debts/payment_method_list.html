@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Métodos de Pago{% endblock %}
+
+{% block content %}
+<h2>Métodos de Pago para {{ debt.name }}</h2>
+<ul>
+    {% for method in payment_methods %}
+        <li>
+            {{ method.method }} - {{ method.monthly_payment }} USD por mes
+            <a href="{% url 'calculate_payments' debt.id %}">Calcular pagos</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Calcular Pagos{% endblock %}
+
+{% block content %}
+<h2>Detalles del Pago para {{ debt.name }}</h2>
+<p>Meses para saldar la deuda: {{ months_to_pay }}</p>
+<p>Total pagado: {{ total_paid }} USD</p>
+<p>Total ahorrado: {{ total_saved }} USD</p>
+{% endblock %}
