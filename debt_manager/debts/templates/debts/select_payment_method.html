@@ -1,0 +1,16 @@
+{% extends "./base.html" %}
+
+{% block title %}Métodos de Pago{% endblock %}
+
+{% block content %}
+<h2>Métodos de Pago para {{ debt.name }}</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="payment_method">Selecciona el Método de Pago:</label>
+        <select name="payment_method" id="payment_method">
+            <option value="avalanche">Avalancha</option>
+            <option value="snowball">Bola de nieve</option>
+        </select>
+        <button type="submit">Calcular pagos</button>
+    </form>
+{% endblock %}

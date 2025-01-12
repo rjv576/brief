@@ -11,9 +11,12 @@
 <body>
     <header>
         <h1>Debt Manager</h1>
-        {% comment %} <nav>
-            <a href="{% url 'debt_list' %}">Home</a>
-        </nav> {% endcomment %}
+       <nav>
+            <a href="{% url 'debt_list' %}">Deudas</a>
+            <a href="{% url 'add_debt' %}">Agregar Deuda</a>
+            
+            
+        </nav> 
     </header>
     <main>
         {% block content %}

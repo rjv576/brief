@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "./base.html" %}
 {% block title %}Lista de Deudas{% endblock %}
 
 {% block content %}
@@ -7,7 +7,7 @@
     {% for debt in debts %}
         <li>
             {{ debt.name }} - {{ debt.balance }} USD
-            <a href="{% url 'payment_method_list' debt.id %}">Ver métodos de pago</a>
+            <a href="{% url 'select_payment_method' debt_id=debt.id %}">Ver métodos de pago</a>
         </li>
     {% endfor %}
 </ul>

@@ -1,10 +1,18 @@
-{% extends "base.html" %}
+{% extends "./base.html" %}
 
-{% block title %}Calcular Pagos{% endblock %}
+<h1>Seleccionar Método de Pago para {{ debt.name }}</h1>
 
 {% block content %}
-<h2>Detalles del Pago para {{ debt.name }}</h2>
-<p>Meses para saldar la deuda: {{ months_to_pay }}</p>
-<p>Total pagado: {{ total_paid }} USD</p>
-<p>Total ahorrado: {{ total_saved }} USD</p>
+<form method="POST">
+    {% csrf_token %}
+    <label for="payment_method">Método de Pago:</label>
+    <select id="payment_method" name="payment_method" required>
+        {% for method in payment_methods %}
+            <option value="{{ method.id }}">
+                {{ method.method }} - Pago Mensual: ${{ method.monthly_payment }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Calcular</button>
+</form>
 {% endblock %}

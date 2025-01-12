@@ -1,0 +1,29 @@
+{% extends "./base.html" %}
+
+
+{% block content %}
+    <h1>Add Debt</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Name</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.total_amount.id_for_label }}">Principal</label>
+            {{ form.total_amount}}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.interest_rate.id_for_label }}">Interest Rate</label>
+            {{ form.interest_rate }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.minimum_payment.id_for_label }}">Minimum Payment</label>
+            {{ form.minimum_payment }}
+        <div class="form-group">
+            <label for="{{ form.due_date.id_for_label }}">Due Date</label>
+            {{ form.due_date }}
+        </div>
+        <button type="submit">Add Debt</button>
+    </form>
+{% endblock %}

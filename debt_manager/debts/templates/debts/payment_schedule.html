@@ -1,0 +1,34 @@
+{% {% extends "./base.html" %}%}
+
+{% block content %}
+<h2>Plan de Pago: {{ method|title }}</h2>
+<p>Total ahorrado con este método: ${{ total_saved|floatformat:2 }}</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Mes</th>
+            <th>Fecha</th>
+            <th>Deuda</th>
+            <th>Pago</th>
+            <th>Saldo Restante</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for month in payments %}
+            <tr>
+                <td rowspan="{{ month.debts|length }}">{{ month.month }}</td>
+                <td rowspan="{{ month.debts|length }}">{{ month.date }}</td>
+                {% for debt in month.debts %}
+                    {% if not forloop.first %}<tr>{% endif %}
+                    <td>{{ debt.name }}</td>
+                    <td>${{ debt.payment|floatformat:2 }}</td>
+                    <td>${{ debt.remaining|floatformat:2 }}</td>
+                    </tr>
+                {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'debt_list' %}">Volver a la lista de deudas</a>
+{% endblock %}
